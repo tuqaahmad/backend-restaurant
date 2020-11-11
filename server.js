@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-//LOGIN POST
+//LOGIN POST API
 app.post("/login", (req, res) => {
   let body = req.body;
   console.log(body);
@@ -45,7 +45,7 @@ app.post("/login", (req, res) => {
     });
 });
 
-//SIGNUP POST
+//SIGNUP POST API
 app.post("/signup", (req, res) => {
   const customers = new Customers(req.body);
 
@@ -65,7 +65,7 @@ app.post("/signup", (req, res) => {
     });
 });
 
-//POST BOOK A TABLE
+//POST BOOK A TABLE API
 app.post("/bookings", (req, res) => {
   const Book = new Books(req.body);
 
@@ -84,7 +84,7 @@ app.post("/bookings", (req, res) => {
     });
 });
 
-//POST DELIVERY
+//POST DELIVERY API
 app.post("/delivery", (req, res) => {
   const Del = new Delivery(req.body);
 
@@ -103,7 +103,7 @@ app.post("/delivery", (req, res) => {
     });
 });
 
-//GET ALL CUSTOMERS
+//GET ALL CUSTOMERS API
 app.get("/customers", (req, res) => {
   MongoClient.connect(dbURI, { useUnifiedTopology: true }, function (err, db) {
     if (err) throw err;
@@ -123,7 +123,7 @@ app.get("/customers", (req, res) => {
   });
 });
 
-//GET ALL BOOKINGS
+//GET ALL BOOKINGS API
 app.get("/bookings", (req, res) => {
   MongoClient.connect(dbURI, { useUnifiedTopology: true }, function (err, db) {
     if (err) throw err;
