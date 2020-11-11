@@ -8,7 +8,7 @@ COPY ./ ./
 
 WORKDIR $HOME/node_docker
 
-RUN npm install --silent --progress=false
+RUN npm install
 
 COPY . $HOME/node_docker
 
