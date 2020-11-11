@@ -10,6 +10,6 @@ WORKDIR $HOME/node_docker
 
 RUN npm install --silent --progress=false
 
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY . $HOME/node_docker
 
 CMD ["npm", "start"]
