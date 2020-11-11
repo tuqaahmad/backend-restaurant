@@ -4,12 +4,12 @@ ENV HOME=/home/app
 
 RUN apt-get update && apt-get install htop
 
-COPY package.json package-lock.json $HOME/node_docker/
+COPY ./ ./
 
 WORKDIR $HOME/node_docker
 
 RUN npm install --silent --progress=false
 
-COPY . $HOME/node_docker
+COPY --from=builder /app/build /usr/share/nginx/html
 
 CMD ["npm", "start"]
