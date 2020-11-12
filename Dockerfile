@@ -1,15 +1,16 @@
-FROM node:12.2
+FROM node:alpine
 
-ENV HOME=/home/app
+RUN mkdir /app
+WORKDIR /app
 
-RUN apt-get update && apt-get install htop
+COPY package.json /app
+RUN npm install --save
+COPY . /app/
+COPY public /app/public
 
-COPY ./ ./
+ENV NODE_ENV production
+ENV PORT 4000
 
-WORKDIR $HOME/node_docker
-
-RUN npm install
-
-COPY . $HOME/node_docker
+EXPOSE 4000
 
 CMD ["npm", "start"]
