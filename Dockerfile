@@ -10,8 +10,6 @@ RUN npm install
 # Copying source files
 COPY . .
 
-# Building app
-RUN npm start
 
 # Running the app
 CMD [ "npm", "start" ]
