@@ -1,16 +1,17 @@
-FROM node:alpine
+FROM node:10
 
-RUN mkdir /app
-WORKDIR /app
+# Setting working directory. All the path will be relative to WORKDIR
+WORKDIR /usr/src/app
 
-COPY package.json /app
-RUN npm install --save
-COPY . /app/
-# COPY public /app/public
+# Installing dependencies
+COPY package*.json ./
+RUN npm install
 
-ENV NODE_ENV production
-ENV PORT 4000
+# Copying source files
+COPY . .
 
-EXPOSE 4000
+# Building app
+RUN npm run build
 
-CMD ["npm", "start"]
+# Running the app
+CMD [ "npm", "start" ]
